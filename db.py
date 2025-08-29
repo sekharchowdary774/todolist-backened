@@ -1,10 +1,11 @@
-import  mysql.connector
+import os
+import mysql.connector
 
 def get_db_connection():
-    return  mysql.connector.connect(
-        host="localhost",
-        user="root",        # your MySQL username
-        password="ss34892@@##", # your MySQL password
-        database="todo_app"      # your DB name
+    return mysql.connector.connect(
+        host=os.environ.get("MYSQLHOST"),
+        user=os.environ.get("MYSQLUSER"),
+        password=os.environ.get("MYSQLPASSWORD"),
+        database=os.environ.get("MYSQLDATABASE"),
+        port=os.environ.get("MYSQLPORT")
     )
-
